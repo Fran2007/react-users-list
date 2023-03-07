@@ -1,0 +1,8 @@
+{
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"jskSingleQuote": true,
+	"trailingComa": "none",
+	"arrowPerents": "avoid"
+}
