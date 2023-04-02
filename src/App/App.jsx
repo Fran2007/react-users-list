@@ -20,7 +20,7 @@ const USERS = [
 
 const App = () => {
 	return (
-		<UserList users={[]}>
+		<UserList users={USERS}>
 			<h1>Listado de usuario</h1>
 		</UserList>
 	);
