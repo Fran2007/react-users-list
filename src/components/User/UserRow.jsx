@@ -3,28 +3,18 @@ import style from './UserRow.module.css';
 import UserStatus from './UserStatus';
 import UserRole from './UserRole';
 
-const UserRow = ({ name, active, role, ...restProps }) => {
-	const [isActive, setIsActive] = useState(active);
-
-	return (
-		<div className={style.Wrapped} {...restProps}>
-			<div className={style.name}>
-				<span>{name}</span>
-			</div>
-			<UserStatus active={isActive} />
-			<div className={style.role}>
-				<UserRole role={role} />
-			</div>
-			<div className={style.action}></div>
-			<button
-				onClick={() => {
-					setIsActive(!isActive);
-				}}
-			>
-				{isActive.active ? 'Desactive' : 'Active'}
-			</button>
+export const UserRow = ({ id, name, active, role, toggleUserActive }) => (
+	<div className={style.Wrapped}>
+		<div className={style.name}>
+			<span>{name}</span>
 		</div>
-	);
-};
-
-export default UserRow;
+		<UserStatus active={active} />
+		<div className={style.role}>
+			<UserRole role={role} />
+		</div>
+		<div className={style.action}></div>
+		<button onClick={() => toggleUserActive(id)}>
+			{active ? 'Desactive' : 'Active'}
+		</button>
+	</div>
+);

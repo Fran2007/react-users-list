@@ -2,28 +2,17 @@ import UserList from '../components/User/UsersList';
 
 const USERS = [
 	{
+		id: 0,
 		name: 'Pablo Catellano',
 		active: true,
 		role: 'Teacher',
 	},
-	{
-		name: 'Jose Miguel Fernández',
-		active: true,
-		role: 'Teacher',
-	},
-	{
-		name: 'Javier López',
-		active: false,
-		role: 'Student',
-	},
+	{ id: 1, name: 'Jose Miguel Fernández', active: true, role: 'Teacher' },
+	{ id: 2, name: 'Javier López', active: false, role: 'Student' },
 ];
 
 const App = () => {
-	return (
-		<UserList users={USERS}>
-			<h1>Listado de usuario</h1>
-		</UserList>
-	);
+	return <UserList initialUsers={USERS} />;
 };
 
 export default App;
