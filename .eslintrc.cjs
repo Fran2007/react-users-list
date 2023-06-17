@@ -8,7 +8,11 @@ module.exports = {
 			version: 'detect',
 		},
 	},
-	extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'standard'],
+	extends: [
+	'plugin:react/recommended',
+	 'plugin:react/jsx-runtime', 
+	 'plugin: react-hooks/recommended',
+	 'standard'],
 	overrides: [],
 	parserOptions: {
 		ecmaVersion: 'latest',
