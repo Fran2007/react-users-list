@@ -2,13 +2,23 @@ import UserList from '../components/User/UsersList';
 
 const USERS = [
 	{
-		id: 0,
+		username: 'pablo',
 		name: 'Pablo Catellano',
+		active: true,
+		role: 'Other',
+	},
+	{
+		username: 'jose',
+		name: 'Jose Miguel Fernández',
 		active: true,
 		role: 'Teacher',
 	},
-	{ id: 1, name: 'Jose Miguel Fernández', active: true, role: 'Teacher' },
-	{ id: 2, name: 'Javier López', active: false, role: 'Student' },
+	{
+		username: 'javier',
+		name: 'Javier López',
+		active: false,
+		role: 'Student',
+	},
 ];
 
 const App = () => {
