@@ -19,11 +19,19 @@ export const useFilters = () => {
 			sortBy,
 		});
 
-	const setOnlyActive = (onlyActive) =>
-		setFilters({
-			...filters,
-			onlyActive,
-		});
+	const setOnlyActive = (onlyActive) => {
+		if (onlyActive && filters.sortBy === 3)
+			setFilters({
+				...filters,
+				sortBy: 0,
+				onlyActive,
+			});
+		else
+			setFilters({
+				...filters,
+				onlyActive,
+			});
+	};
 
 	return {
 		...filters,

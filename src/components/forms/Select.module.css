@@ -1,0 +1,31 @@
+.Wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.select {
+	cursor: pointer;
+	inline-size: 100%;
+	block-size: 2.5rem;
+	padding: 0.5rem 1.9rem 0.5rem 1rem;
+	border: none;
+	outline: none;
+	appearance: none;
+	box-shadow: var(--shadow-sm);
+	border-radius: var(--shadow-sm);
+}
+
+.select:focus {
+	box-shadow: var(--shadow-md);
+}
+
+.arrow {
+	pointer-events: none;
+	position: absolute;
+	inset-block-start: 50%;
+	inset-inline-end: 0.1rem;
+	transform: translateY(-50%);
+	block-size: 1.5rem;
+	inline-size: 1.9rem;
+	color: var(--color-gray);
+}

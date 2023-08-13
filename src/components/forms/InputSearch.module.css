@@ -1,0 +1,32 @@
+.input {
+	height: 100%;
+	padding: 0.5rem 1rem;
+	padding-left: 2.5rem;
+
+	border-radius: var(--radius-sm);
+	border: none;
+	outline: none;
+	box-shadow: var(--shadow-md);
+}
+
+.input:focus {
+	box-shadow: var(--shadow-md);
+}
+
+.inpurt::placeholder {
+	color: var(--color-lightgray);
+}
+
+.wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.icons {
+	pointer-events: none;
+	position: absolute;
+	left: 0.9rem;
+	height: 1rem;
+	width: 1rem;
+	color: var(--color-lightgray);
+}

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import style from './UserRow.module.css';
 import UserStatus from './UserStatus';
 import UserRole from './UserRole';
