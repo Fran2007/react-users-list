@@ -6,17 +6,21 @@ export const useFilters = () => {
 		search: '',
 		onlyActive: false,
 		sortBy: SORT_OPTIONS.DEFAULT,
+		page: 1,
+		itemsForPages: 2,
 	});
 
 	const setSearch = (search) =>
 		setFilters({
 			...filters,
+			page: 1,
 			search,
 		});
 
 	const setSortBy = (sortBy) =>
 		setFilters({
 			...filters,
+			page: 1,
 			sortBy,
 		});
 
@@ -29,14 +33,31 @@ export const useFilters = () => {
 		setFilters({
 			...filters,
 			sortBy: newSortBy,
+			page: 1,
 			onlyActive,
 		});
 	};
 
+	const setPage = (newPage) => {
+		setFilters({
+			...filters,
+			page: newPage,
+		});
+	};
+
+	const setItemsForPages = (itemsForPages) => {
+		setFilters({
+			...filters,
+			page: itemsForPages,
+		});
+	};
+
 	return {
-		...filters,
+		filters,
 		setSearch,
 		setOnlyActive,
 		setSortBy,
+		setPage,
+		setItemsForPages,
 	};
 };

@@ -1,42 +1,65 @@
 import { useFilters } from '../../Hooks/useFilters';
-import { UsersListFilters } from './UsersListFilters';
-import { UserListRows } from './UserListRows';
 import style from './UserList.module.css';
-import { useState } from 'react';
+import { UserListRows } from './UserListRows';
+import { UsersListFilters } from './UsersListFilters';
 
 import {
 	filterActiveUsers,
 	filterUsersByName,
+	paginateUsers,
 	sortUsers,
 } from '../../lib/Context/Users/filterUsers';
+import { UserListPagination } from './UserListPagination';
 
 const UserList = ({ initialUsers }) => {
-	const { search, onlyActive, sortBy, ...setFiltersFunction } = useFilters();
+	const {
+		filters,
+		setSearch,
+		setOnlyActive,
+		setSortBy,
+		setPage,
+		setItemsForPages,
+	} = useFilters();
 
-	const { users } = useUser(initialUsers);
-
-	let usersFiltered = filterActiveUsers(users, onlyActive);
-	usersFiltered = filterUsersByName(usersFiltered, search);
-	usersFiltered = sortUsers(usersFiltered, sortBy);
+	const { users, totalPages } = getUsers(initialUsers, filters);
 
 	return (
 		<div className={style.wrapper}>
 			<h1 className={style.title}>Listado de usuario</h1>
 			<UsersListFilters
-				search={search}
-				onlyActive={onlyActive}
-				sortBy={sortBy}
-				{...setFiltersFunction}
+				search={filters.search}
+				onlyActive={filters.onlyActive}
+				sortBy={filters.sortBy}
+				setSearch={setSearch}
+				setOnlyActive={setOnlyActive}
+				setSortBy={setSortBy}
+				setPage={setPage}
 			/>
-			<UserListRows users={usersFiltered} />
+			<UserListRows users={users} />
+			<UserListPagination
+				page={filters.page}
+				itemsForPages={filters.itemsForPages}
+				setPage={setPage}
+				setItemsForPages={setItemsForPages}
+				totalPages={totalPages}
+			/>
 		</div>
 	);
 };
 
-const useUser = (initialUser) => {
-	const [users, setUsers] = useState(initialUser);
+const getUsers = (
+	initialUser,
+	{ search, onlyActive, sortBy, page, itemsForPages }
+) => {
+	let usersFiltered = filterActiveUsers(initialUser, onlyActive);
+	usersFiltered = filterUsersByName(usersFiltered, search);
+	usersFiltered = sortUsers(usersFiltered, sortBy);
 
-	return { users };
+	const totalPages = Math.ceil(usersFiltered.length / itemsForPages);
+
+	usersFiltered = paginateUsers(usersFiltered, page, itemsForPages);
+
+	return { users: usersFiltered, totalPages };
 };
 
 export default UserList;
